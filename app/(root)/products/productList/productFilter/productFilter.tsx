@@ -1,7 +1,11 @@
 "use client";
-import { Slider } from "@mui/material";
-import React, { useState } from "react";
+import { Accordion, Grid, Slider, Typography } from "@mui/material";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import AccordionSummary from "@mui/material/AccordionSummary";
 
+import React, { useState } from "react";
+import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 interface Product {
   id: string;
   label: string;
@@ -40,9 +44,9 @@ const ProductFilter: React.FC = () => {
   };
 
   return (
-    <div className="flex-col items-center justify-center  w-full" style={{}}>
+    <div className="flex-col items-center justify-center  w-full  p-2 rounded">
       <h1 className="ml-5 mt-2 font-bold text-[18px]">Filters</h1>
-      <div className={`z-10 m-3 w-full p-3 bg-white rounded-lg shadow`}>
+      <div className={`m-3 p-3 bg-white rounded-lg shadow `}>
         <h6 className="mb-3 text-sm font-medium text-gray-900">Category</h6>
         <ul className="space-y-2 text-sm">
           {products.map((product) => (
@@ -68,7 +72,7 @@ const ProductFilter: React.FC = () => {
           <label className="block mb-2 text-sm font-medium text-gray-900">
             Price
           </label>
-          <div className=" w-full items-center ml-2">
+          <div className=" w-[90%] items-center">
             <Slider
               value={value}
               onChange={handleChange}
@@ -80,7 +84,7 @@ const ProductFilter: React.FC = () => {
         </div>
         <div className="flex justify-between gap-3 ">
           <div
-            className="flex w-full justify-between  items-center gap-8"
+            className="flex w-full justify-between  items-center gap-2"
             style={{
               display: "flex",
               flexDirection: "row",
@@ -109,6 +113,46 @@ const ProductFilter: React.FC = () => {
           </div>
         </div>
       </div>
+      <Grid container className="w-[260px] m-2 mt-5">
+        <Accordion>
+          <AccordionSummary expandIcon={<ArrowDownwardIcon />}>
+            <Typography className="uppercase text-[13px] h-3">Ram</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Typography>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
+              eget.
+            </Typography>
+          </AccordionDetails>
+        </Accordion>
+        <Accordion>
+          <AccordionSummary expandIcon={<ArrowDownwardIcon />}>
+            <Typography className="uppercase text-[13px] h-3">Rom</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Typography>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
+              eget.
+            </Typography>
+          </AccordionDetails>
+        </Accordion>
+        <Accordion>
+          <AccordionSummary expandIcon={<ArrowDownwardIcon />}>
+            <Typography className="uppercase text-[13px] h-3">
+              Camera
+            </Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Typography>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
+              eget.
+            </Typography>
+          </AccordionDetails>
+        </Accordion>
+      </Grid>
     </div>
   );
 };

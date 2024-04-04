@@ -1,8 +1,16 @@
-// SingleProductPage.tsx
+"use client";
 
+import { selectSelectedProduct } from "@/app/redux/slice/productSlice";
+import { RootState } from "@/app/redux/store";
+import Image from "next/image";
 import React from "react";
+import { useSelector } from "react-redux";
+import NoImg from "../../../../../public/assets/images/noImage.jpg";
+import { FaRupeeSign } from "react-icons/fa";
 
 const SingleProductPage = () => {
+  const selectedProduct = useSelector(selectSelectedProduct);
+  console.log("selected product:=>", selectedProduct);
   return (
     <section className="py-12 sm:py-16">
       <div className="container mx-auto px-4">
@@ -11,10 +19,13 @@ const SingleProductPage = () => {
             <div className="lg:flex lg:items-start">
               <div className="lg:order-2 lg:ml-5">
                 <div className="max-w-xl overflow-hidden rounded-lg">
-                  <img
-                    className="h-full w-full max-w-full object-cover"
-                    src="/images/JHxMnVrtPMdcNU1s_7g7f.png"
-                    alt=""
+                  <Image
+                    alt="hh"
+                    width={400}
+                    height={200}
+                    src={selectedProduct?.images?.src ?? NoImg}
+                    className="cursor-pointer"
+                    style={{ cursor: "pointer" }}
                   />
                 </div>
               </div>
@@ -25,9 +36,11 @@ const SingleProductPage = () => {
                     type="button"
                     className="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-gray-900 text-center"
                   >
-                    <img
+                    <Image
+                      width={100}
+                      height={100}
                       className="h-full w-full object-cover"
-                      src="/images/JHxMnVrtPMdcNU1s_7g7f.png"
+                      src={selectedProduct?.images?.src ?? NoImg}
                       alt=""
                     />
                   </button>
@@ -35,9 +48,11 @@ const SingleProductPage = () => {
                     type="button"
                     className="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-transparent text-center"
                   >
-                    <img
+                    <Image
+                      width={100}
+                      height={100}
                       className="h-full w-full object-cover"
-                      src="/images/JHxMnVrtPMdcNU1s_7g7f.png"
+                      src={selectedProduct?.images?.src ?? NoImg}
                       alt=""
                     />
                   </button>
@@ -45,9 +60,11 @@ const SingleProductPage = () => {
                     type="button"
                     className="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-transparent text-center"
                   >
-                    <img
+                    <Image
+                      width={100}
+                      height={100}
                       className="h-full w-full object-cover"
-                      src="/images/JHxMnVrtPMdcNU1s_7g7f.png"
+                      src={selectedProduct?.images?.src ?? NoImg}
                       alt=""
                     />
                   </button>
@@ -58,7 +75,7 @@ const SingleProductPage = () => {
 
           <div className="lg:col-span-2 lg:row-span-2 lg:row-end-2">
             <h1 className="sm:text-2xl font-bold text-gray-900 sm:text-3xl">
-              Afro-Brazillian Coffee
+              {selectedProduct?.name}
             </h1>
 
             <div className="mt-5 flex items-center">
@@ -120,11 +137,11 @@ const SingleProductPage = () => {
                 </svg>
               </div>
               <p className="ml-2 text-sm font-medium text-gray-500">
-                1,209 Reviews
+                {selectedProduct?.rating} Reviews
               </p>
             </div>
 
-            <h2 className="mt-8 text-base text-gray-900">Coffee Type</h2>
+            {/* <h2 className="mt-8 text-base text-gray-900">Specs</h2>
             <div className="mt-3 flex select-none flex-wrap items-center gap-1">
               <label className="">
                 <input
@@ -135,7 +152,7 @@ const SingleProductPage = () => {
                   checked
                 />
                 <p className="peer-checked:bg-black peer-checked:text-white rounded-lg border border-black px-6 py-2 font-bold">
-                  Powder
+                  {selectedProduct?.processor}
                 </p>
               </label>
               <label className="">
@@ -146,7 +163,7 @@ const SingleProductPage = () => {
                   className="peer sr-only"
                 />
                 <p className="peer-checked:bg-black peer-checked:text-white rounded-lg border border-black px-6 py-2 font-bold">
-                  Whole Bean
+                  {selectedProduct?.rom}
                 </p>
               </label>
               <label className="">
@@ -157,13 +174,13 @@ const SingleProductPage = () => {
                   className="peer sr-only"
                 />
                 <p className="peer-checked:bg-black peer-checked:text-white rounded-lg border border-black px-6 py-2 font-bold">
-                  Ground
+                  {selectedProduct?.battery}
                 </p>
               </label>
-            </div>
+            </div> */}
 
             <h2 className="mt-8 text-base text-gray-900">
-              Choose subscription
+              Choose your Emi plan
             </h2>
             <div className="mt-3 flex select-none flex-wrap items-center gap-1">
               <label className="">
@@ -176,7 +193,9 @@ const SingleProductPage = () => {
                 <p className="peer-checked:bg-black peer-checked:text-white rounded-lg border border-black px-6 py-2 font-bold">
                   4 Months
                 </p>
-                <span className="mt-1 block text-center text-xs">$80/mo</span>
+                <span className="mt-1  text-center text-xs flex items-center">
+                  <FaRupeeSign /> 10000/mo
+                </span>
               </label>
               <label className="">
                 <input
@@ -189,7 +208,9 @@ const SingleProductPage = () => {
                 <p className="peer-checked:bg-black peer-checked:text-white rounded-lg border border-black px-6 py-2 font-bold">
                   8 Months
                 </p>
-                <span className="mt-1 block text-center text-xs">$60/mo</span>
+                <span className="mt-1  text-center text-xs flex items-center">
+                  <FaRupeeSign /> 6900/mo
+                </span>{" "}
               </label>
               <label className="">
                 <input
@@ -201,14 +222,18 @@ const SingleProductPage = () => {
                 <p className="peer-checked:bg-black peer-checked:text-white rounded-lg border border-black px-6 py-2 font-bold">
                   12 Months
                 </p>
-                <span className="mt-1 block text-center text-xs">$40/mo</span>
+                <span className="mt-1  text-center text-xs flex items-center">
+                  <FaRupeeSign /> 3300/mo
+                </span>{" "}
               </label>
             </div>
 
             <div className="mt-10 flex flex-col items-center justify-between space-y-4 border-t border-b py-4 sm:flex-row sm:space-y-0">
-              <div className="flex items-end">
-                <h1 className="text-3xl font-bold">$60.50</h1>
-                <span className="text-base">/month</span>
+              <div className="flex items-center">
+                <span className="text-3xl">
+                  <FaRupeeSign />
+                </span>
+                <h1 className="text-3xl font-bold">{selectedProduct?.price}</h1>
               </div>
 
               <button
@@ -230,6 +255,11 @@ const SingleProductPage = () => {
                   />
                 </svg>
                 Add to cart
+              </button>
+            </div>
+            <div className="">
+              <button className="flex justify-center items-center float-right rounded-md border-2 border-transparent bg-orange-500 bg-none w-[70%] mt-1  py-3 text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-orange-800">
+                Buy now
               </button>
             </div>
 
@@ -294,29 +324,33 @@ const SingleProductPage = () => {
                   Reviews
                   <span className="ml-2 block rounded-full bg-gray-500 px-2 py-px text-xs font-bold text-gray-100">
                     {" "}
-                    1,209{" "}
+                    {selectedProduct?.rating}
                   </span>
                 </a>
               </nav>
             </div>
-
+            <div className="mt-8 flow-root sm:mt-12">
+              <h1 className="text-3xl font-bold">Details</h1>
+              <p className="mt-4">{selectedProduct?.description}</p>
+              <h1 className="mt-8 text-3xl font-bold">
+                Specs of {selectedProduct?.name}
+              </h1>
+              <div className="">
+                <ul>
+                  <li>Processor: {selectedProduct?.processor}</li>
+                  <li>Ram: {selectedProduct?.ram}</li>
+                  <li>Rom: {selectedProduct?.rom}</li>
+                  <li>Battery: {selectedProduct?.battery}</li>
+                  <li>Display: {selectedProduct?.display}</li>
+                  <li>Camera: {selectedProduct?.camera}</li>
+                </ul>
+              </div>
+            </div>
             <div className="mt-8 flow-root sm:mt-12">
               <h1 className="text-3xl font-bold">Delivered To Your Door</h1>
               <p className="mt-4">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia
                 accusantium nesciunt fuga.
-              </p>
-              <h1 className="mt-8 text-3xl font-bold">
-                From the Fine Farms of Brazil
-              </h1>
-              <p className="mt-4">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio
-                numquam enim facere.
-              </p>
-              <p className="mt-4">
-                Amet consectetur adipisicing elit. Optio numquam enim facere.
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore
-                rerum nostrum eius facere, ad neque.
               </p>
             </div>
           </div>

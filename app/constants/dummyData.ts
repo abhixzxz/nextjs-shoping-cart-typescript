@@ -27,7 +27,7 @@ function getRandomInt(min: any, max: any) {
 
 const dummyData = [
   {
-    id: 1,
+    id: "1",
     category: "Phones",
     name: "Apple iPhone 13 Pro",
     price: 74999,
@@ -44,7 +44,7 @@ const dummyData = [
     audio: "Stereo speakers",
   },
   {
-    id: 2,
+    id: "2",
     category: "Phones",
     name: "Samsung Galaxy S21 Ultra",
     price: 89999,
@@ -61,7 +61,7 @@ const dummyData = [
     audio: "Stereo speakers tuned by AKG, Dolby Atmos",
   },
   {
-    id: 3,
+    id: "3",
     category: "Phones",
     name: "Google Pixel 6 Pro",
     price: 67499,
@@ -78,7 +78,7 @@ const dummyData = [
     audio: "Stereo speakers",
   },
   {
-    id: 4,
+    id: "4",
     category: "Phones",
     name: "OnePlus 9 Pro",
     price: 79990,
@@ -95,7 +95,7 @@ const dummyData = [
     audio: "Dual stereo speakers",
   },
   {
-    id: 5,
+    id: "5",
     category: "Phones",
     name: "iPhone SE (2020)",
     price: 29990,
@@ -112,7 +112,7 @@ const dummyData = [
     audio: "Stereo speakers",
   },
   {
-    id: 6,
+    id: "6",
     category: "Phones",
     name: "Samsung Galaxy A52",
     price: 24990,
@@ -129,7 +129,7 @@ const dummyData = [
     audio: "Stereo speakers",
   },
   {
-    id: 7,
+    id: "7",
     category: "Phones",
     name: "Xiaomi Redmi Note 10 Pro",
     price: 22499,
@@ -146,7 +146,7 @@ const dummyData = [
     audio: "Dual stereo speakers",
   },
   {
-    id: 8,
+    id: "8",
     category: "Phones",
     name: "OnePlus Nord 2",
     price: 29999,
@@ -163,7 +163,7 @@ const dummyData = [
     audio: "Stereo speakers",
   },
   {
-    id: 9,
+    id: "9",
     category: "Phones",
     name: "Google Pixel 5a",
     price: 33499,
@@ -180,7 +180,7 @@ const dummyData = [
     audio: "Stereo speakers",
   },
   {
-    id: 10,
+    id: "10",
     category: "Phones",
     name: "Apple iPhone 12",
     price: 59900,
@@ -197,7 +197,7 @@ const dummyData = [
     audio: "Stereo speakers",
   },
   {
-    id: 11,
+    id: "11",
     category: "Phones",
     name: "Samsung Galaxy Z Flip 3",
     price: 74999,
@@ -214,7 +214,7 @@ const dummyData = [
     audio: "Stereo speakers",
   },
   {
-    id: 12,
+    id: "12",
     category: "Phones",
     name: "OnePlus 8T",
     price: 44999,
@@ -231,7 +231,7 @@ const dummyData = [
     audio: "Stereo speakers",
   },
   {
-    id: 13,
+    id: "13",
     category: "Phones",
     name: "Motorola Moto G Power",
     price: 14999,
@@ -248,7 +248,7 @@ const dummyData = [
     audio: "Stereo speakers",
   },
   {
-    id: 14,
+    id: "14",
     category: "Phones",
     name: "Realme 8 Pro",
     price: 20999,
@@ -265,7 +265,7 @@ const dummyData = [
     audio: "Stereo speakers",
   },
   {
-    id: 15,
+    id: "15",
     category: "Phones",
     name: "Xiaomi Poco X3 Pro",
     price: 18749,
@@ -282,7 +282,7 @@ const dummyData = [
     audio: "Stereo speakers",
   },
   {
-    id: 16,
+    id: "16",
     category: "Phones",
     name: "Google Pixel 4a",
     price: 26290,
@@ -299,7 +299,7 @@ const dummyData = [
     audio: "Stereo speakers",
   },
   {
-    id: 17,
+    id: "17",
     category: "Phones",
     name: "Samsung Galaxy A32",
     price: 20999,
@@ -316,7 +316,7 @@ const dummyData = [
     audio: "Stereo speakers",
   },
   {
-    id: 18,
+    id: "18",
     category: "Phones",
     name: "Apple iPhone SE (2022)",
     price: 32490,
@@ -333,7 +333,7 @@ const dummyData = [
     audio: "Stereo speakers",
   },
   {
-    id: 19,
+    id: "19",
     category: "Phones",
     name: "OnePlus 9",
     price: 54999,
@@ -350,7 +350,7 @@ const dummyData = [
     audio: "Stereo speakers",
   },
   {
-    id: 20,
+    id: "20",
     category: "Phones",
     name: "Xiaomi Mi 11 Lite",
     price: 22999,

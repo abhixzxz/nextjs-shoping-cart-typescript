@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import {
   Grid,
@@ -6,26 +7,28 @@ import {
   Typography,
   Rating,
   Box,
-  List,
-  ListItem,
-  ListItemAvatar,
-  Avatar,
-  ListItemText,
   Tooltip,
 } from "@mui/material";
 import Image from "next/image";
 import StarIcon from "@mui/icons-material/Star";
 import dummyData from "@/app/constants/dummyData";
-import ImageIcon from "@mui/icons-material/Image";
-import WorkIcon from "@mui/icons-material/Work";
-import BeachAccessIcon from "@mui/icons-material/BeachAccess";
 import ProductFilter from "./productFilter/productFilter";
+import { useRouter } from "next/navigation";
+import { useDispatch, useSelector } from "react-redux";
+import { selectProduct } from "../../../redux/slice/productSlice";
 
 function ProductList() {
+  const router = useRouter();
+  const dispatch = useDispatch();
+  const filteredData = useSelector((state) => state.products.filteredProducts);
+  const handleProductClick = (product) => {
+    dispatch(selectProduct(product));
+    router.push("products/productList/singleProduct");
+  };
+
   return (
     <div className="w-full">
       <Grid container spacing={2} className="w-full">
-        {/* leftsidebar */}
         <Grid
           item
           xs={2.5}
@@ -34,16 +37,16 @@ function ProductList() {
             overflow: "hidden",
           }}
         >
-          <Grid container className="fixed">
-            <Grid item xs={1.8}>
+          <Grid className="fixed" style={{}}>
+            <Grid item xs={12}>
               <ProductFilter />
             </Grid>
           </Grid>
         </Grid>
-        {/* Products */}
+
         <Grid item xs={9} className="p-2">
           <Grid container spacing={2}>
-            {dummyData?.map((item, index) => (
+            {filteredData?.map((item, index) => (
               <Grid
                 key={index}
                 item
@@ -71,13 +74,15 @@ function ProductList() {
                   }}
                 >
                   <div
-                    className="flex-col items-center justify-center gap-3"
+                    onClick={() => handleProductClick(item)}
+                    className="flex-col items-center justify-center gap-3 cursor-pointer"
                     style={{
                       height: "220px",
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center",
                       margin: "10px",
+                      cursor: "pointer",
                     }}
                   >
                     <Image
@@ -85,6 +90,7 @@ function ProductList() {
                       height={100}
                       src={item?.images}
                       className="cursor-pointer"
+                      style={{ cursor: "pointer" }}
                     />
                   </div>
                   <CardContent style={{ flexGrow: 1 }}>

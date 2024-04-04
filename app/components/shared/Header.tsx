@@ -32,12 +32,13 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 function HeaderNav() {
   const theme = useTheme();
   const [open, setOpen] = useState(false);
+
   const router = useRouter();
   const handleDrawerOpen = () => {
     setOpen(true);
   };
   const handleNavigateHome = () => {
-    console.log("hello");
+    router.push("/");
   };
   const user: boolean = false;
   return (
