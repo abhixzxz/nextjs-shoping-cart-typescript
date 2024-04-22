@@ -16,12 +16,37 @@ import ProductFilter from "./productFilter/productFilter";
 import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { selectProduct } from "../../../redux/slice/productSlice";
+import { FaRupeeSign } from "react-icons/fa";
+
+interface Product {
+  id: string;
+  name: string;
+  price: number;
+  images: string;
+  battery: string;
+  camera: string;
+  display: string;
+  processor: string;
+  ram: string;
+  rom: string;
+  rating: string;
+  description: string;
+  companyName: string;
+}
+
+interface RootState {
+  products: {
+    filteredProducts: Product[];
+  };
+}
 
 function ProductList() {
   const router = useRouter();
   const dispatch = useDispatch();
-  const filteredData = useSelector((state) => state.products.filteredProducts);
-  const handleProductClick = (product) => {
+  const filteredData = useSelector(
+    (state: RootState) => state.products.filteredProducts
+  );
+  const handleProductClick = (product: Product) => {
     dispatch(selectProduct(product));
     router.push("products/productList/singleProduct");
   };
@@ -37,7 +62,7 @@ function ProductList() {
             overflow: "hidden",
           }}
         >
-          <Grid className="fixed" style={{}}>
+          <Grid className="fixed">
             <Grid item xs={12}>
               <ProductFilter />
             </Grid>
@@ -46,7 +71,7 @@ function ProductList() {
 
         <Grid item xs={9} className="p-2">
           <Grid container spacing={2}>
-            {filteredData?.map((item, index) => (
+            {filteredData?.map((item: Product, index: number) => (
               <Grid
                 key={index}
                 item
@@ -89,12 +114,13 @@ function ProductList() {
                       width={200}
                       height={100}
                       src={item?.images}
+                      alt={item?.name}
                       className="cursor-pointer"
                       style={{ cursor: "pointer" }}
                     />
                   </div>
                   <CardContent style={{ flexGrow: 1 }}>
-                    <Tooltip title={item?.name} arrow>
+                    <Tooltip title={item.name} arrow>
                       <Typography
                         gutterBottom
                         variant="h5"
@@ -107,7 +133,7 @@ function ProductList() {
                           maxWidth: "100%",
                         }}
                       >
-                        {item?.name}
+                        {item.name}
                       </Typography>
                     </Tooltip>
                     <div
@@ -117,33 +143,39 @@ function ProductList() {
                         marginBottom: "8px",
                       }}
                     >
-                      <Typography variant="body1" color="text.primary">
-                        {item?.price}
-                      </Typography>
-                      <Box
-                        sx={{
-                          width: 200,
-                          display: "flex",
-                          alignItems: "center",
-                        }}
-                      >
-                        <Rating
-                          name="hover-feedback"
-                          value={item?.rating}
-                          precision={0.5}
-                          emptyIcon={
-                            <StarIcon
-                              style={{ opacity: 0.55 }}
-                              fontSize="inherit"
-                            />
-                          }
-                        />
-                      </Box>
+                      <div className="flex items-center justify-between w-full gap-4">
+                        <Typography
+                          variant="body1"
+                          className="flex items-center gap-2"
+                          color="text.primary"
+                        >
+                          <FaRupeeSign /> {item.price}
+                        </Typography>
+                        <Box
+                          sx={{
+                            width: 200,
+                            display: "flex",
+                            alignItems: "center",
+                          }}
+                        >
+                          <Rating
+                            name="hover-feedback"
+                            value={Number(item.rating)}
+                            precision={0.5}
+                            emptyIcon={
+                              <StarIcon
+                                style={{ opacity: 0.55 }}
+                                fontSize="inherit"
+                              />
+                            }
+                          />
+                        </Box>
+                      </div>
                     </div>
                     <Typography variant="body2" color="text.secondary">
-                      {item?.description.length > 200
-                        ? `${item?.description.substring(0, 200)}...`
-                        : item?.description}
+                      {item.description.length > 200
+                        ? `${item.description.substring(0, 200)}...`
+                        : item.description}
                     </Typography>
                   </CardContent>
                 </Card>

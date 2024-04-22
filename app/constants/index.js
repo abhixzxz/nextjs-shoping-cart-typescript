@@ -26,13 +26,8 @@ export const routes = [
   },
   {
     label: "Product Details",
-    route: "/products/:id",
+    route: "/productDetails",
     icon: <InfoIcon />,
-  },
-  {
-    label: "Cart",
-    route: "/cart",
-    icon: <ShoppingCartIcon />,
   },
   {
     label: "Checkout",
@@ -51,7 +46,7 @@ export const routes = [
   },
   {
     label: "Wishlist",
-    route: "/wishlist",
+    route: "/whishList",
     icon: <FavoriteIcon />,
   },
   {

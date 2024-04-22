@@ -42,6 +42,7 @@ const dummyData = [
     processor: "Apple A15 Bionic",
     display: "6.1 inches, Super Retina XDR OLED",
     audio: "Stereo speakers",
+    companyName: "Apple"
   },
   {
     id: "2",
@@ -59,6 +60,7 @@ const dummyData = [
     processor: "Exynos 2100 / Qualcomm Snapdragon 888",
     display: "6.8 inches, Dynamic AMOLED 2X",
     audio: "Stereo speakers tuned by AKG, Dolby Atmos",
+    companyName: "Samsung"
   },
   {
     id: "3",
@@ -76,6 +78,7 @@ const dummyData = [
     processor: "Google Tensor",
     display: "6.7 inches, LTPO OLED",
     audio: "Stereo speakers",
+    companyName: "Google"
   },
   {
     id: "4",
@@ -93,6 +96,7 @@ const dummyData = [
     processor: "Qualcomm Snapdragon 888",
     display: "6.7 inches, Fluid AMOLED",
     audio: "Dual stereo speakers",
+    companyName: "OnePlus"
   },
   {
     id: "5",
@@ -110,6 +114,7 @@ const dummyData = [
     processor: "Apple A13 Bionic",
     display: "4.7 inches, Retina HD",
     audio: "Stereo speakers",
+    companyName: "Apple"
   },
   {
     id: "6",
@@ -127,6 +132,7 @@ const dummyData = [
     processor: "Qualcomm Snapdragon 720G",
     display: "6.5 inches, Super AMOLED",
     audio: "Stereo speakers",
+    companyName: "Samsung"
   },
   {
     id: "7",
@@ -144,6 +150,7 @@ const dummyData = [
     processor: "Qualcomm Snapdragon 732G",
     display: "6.67 inches, Super AMOLED",
     audio: "Dual stereo speakers",
+    companyName: "Xiaomi"
   },
   {
     id: "8",
@@ -161,6 +168,7 @@ const dummyData = [
     processor: "MediaTek Dimensity 1200-AI",
     display: "6.43 inches, Fluid AMOLED",
     audio: "Stereo speakers",
+    companyName: "OnePlus"
   },
   {
     id: "9",
@@ -178,6 +186,7 @@ const dummyData = [
     processor: "Qualcomm Snapdragon 765G",
     display: "6.34 inches, OLED",
     audio: "Stereo speakers",
+    companyName: "Google"
   },
   {
     id: "10",
@@ -195,6 +204,7 @@ const dummyData = [
     processor: "Apple A14 Bionic",
     display: "6.1 inches, Super Retina XDR OLED",
     audio: "Stereo speakers",
+    companyName: "Apple"
   },
   {
     id: "11",
@@ -212,6 +222,7 @@ const dummyData = [
     processor: "Qualcomm Snapdragon 888",
     display: "6.7 inches, Foldable Dynamic AMOLED",
     audio: "Stereo speakers",
+    companyName: "Samsung"
   },
   {
     id: "12",
@@ -229,6 +240,7 @@ const dummyData = [
     processor: "Qualcomm Snapdragon 865",
     display: "6.55 inches, Fluid AMOLED",
     audio: "Stereo speakers",
+    companyName: "OnePlus"
   },
   {
     id: "13",
@@ -246,6 +258,7 @@ const dummyData = [
     processor: "Qualcomm Snapdragon 662",
     display: "6.6 inches, IPS LCD",
     audio: "Stereo speakers",
+    companyName: "Motorola"
   },
   {
     id: "14",
@@ -263,6 +276,7 @@ const dummyData = [
     processor: "Qualcomm Snapdragon 720G",
     display: "6.4 inches, Super AMOLED",
     audio: "Stereo speakers",
+    companyName: "Realme"
   },
   {
     id: "15",
@@ -280,8 +294,9 @@ const dummyData = [
     processor: "Qualcomm Snapdragon 860",
     display: "6.67 inches, IPS LCD",
     audio: "Stereo speakers",
+    companyName: "Xiaomi"
   },
-  {
+   {
     id: "16",
     category: "Phones",
     name: "Google Pixel 4a",
@@ -297,6 +312,7 @@ const dummyData = [
     processor: "Qualcomm Snapdragon 730G",
     display: "5.81 inches, OLED",
     audio: "Stereo speakers",
+    companyName: "Google LLC"
   },
   {
     id: "17",
@@ -314,6 +330,7 @@ const dummyData = [
     processor: "Mediatek Helio G80 / G85",
     display: "6.4 inches, Super AMOLED",
     audio: "Stereo speakers",
+    companyName: "Samsung Electronics"
   },
   {
     id: "18",
@@ -331,6 +348,7 @@ const dummyData = [
     processor: "Apple A15 Bionic",
     display: "4.7 inches, Retina HD",
     audio: "Stereo speakers",
+    companyName: "Apple Inc."
   },
   {
     id: "19",
@@ -348,6 +366,7 @@ const dummyData = [
     processor: "Qualcomm Snapdragon 888",
     display: "6.55 inches, Fluid AMOLED",
     audio: "Stereo speakers",
+    companyName: "OnePlus Technology (Shenzhen) Co., Ltd."
   },
   {
     id: "20",
@@ -365,7 +384,9 @@ const dummyData = [
     processor: "Qualcomm Snapdragon 732G",
     display: "6.55 inches, AMOLED",
     audio: "Stereo speakers",
-  },
+    companyName: "Xiaomi Corporation"
+  }
 ];
+
 
 export default dummyData;

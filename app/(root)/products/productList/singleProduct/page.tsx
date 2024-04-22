@@ -3,13 +3,43 @@
 import { selectSelectedProduct } from "@/app/redux/slice/productSlice";
 import { RootState } from "@/app/redux/store";
 import Image from "next/image";
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import NoImg from "../../../../../public/assets/images/noImage.jpg";
 import { FaRupeeSign } from "react-icons/fa";
+import { CartData, addCartItem } from "@/app/redux/slice/cartSlice";
+import MuiAlert from "@mui/material/Alert";
+import { Snackbar } from "@mui/material";
 
 const SingleProductPage = () => {
   const selectedProduct = useSelector(selectSelectedProduct);
+  const [showAlert, setShowAlert] = useState(false);
+  const [sucessAlert, setSucessAlert] = useState(false);
+
+  const dispatch = useDispatch();
+  const cartItemsRedux: CartData[] = useSelector(
+    (state: RootState) => state.cart.cartDatas
+  );
+  const handleAddToCart = () => {
+    if (selectedProduct && cartItemsRedux) {
+      const isProductInCart = cartItemsRedux.some(
+        (item) => item.id === selectedProduct.id
+      );
+      if (!isProductInCart) {
+        dispatch(addCartItem(selectedProduct));
+        setSucessAlert(true);
+      } else {
+        setShowAlert(true);
+      }
+    }
+  };
+  const handleCloseSnackbar = () => {
+    setShowAlert(false);
+  };
+
+  const handleCloseSucessAlert = () => {
+    setSucessAlert(false);
+  };
   console.log("selected product:=>", selectedProduct);
   return (
     <section className="py-12 sm:py-16">
@@ -23,7 +53,12 @@ const SingleProductPage = () => {
                     alt="hh"
                     width={400}
                     height={200}
-                    src={selectedProduct?.images?.src ?? NoImg}
+                    // src={selectedProduct?.images?.src ?? NoImg}
+                    src={
+                      typeof selectedProduct?.images === "string"
+                        ? selectedProduct?.images
+                        : selectedProduct?.images?.src || NoImg
+                    }
                     className="cursor-pointer"
                     style={{ cursor: "pointer" }}
                   />
@@ -40,7 +75,11 @@ const SingleProductPage = () => {
                       width={100}
                       height={100}
                       className="h-full w-full object-cover"
-                      src={selectedProduct?.images?.src ?? NoImg}
+                      src={
+                        typeof selectedProduct?.images === "string"
+                          ? selectedProduct?.images
+                          : selectedProduct?.images?.src || NoImg
+                      }
                       alt=""
                     />
                   </button>
@@ -52,7 +91,11 @@ const SingleProductPage = () => {
                       width={100}
                       height={100}
                       className="h-full w-full object-cover"
-                      src={selectedProduct?.images?.src ?? NoImg}
+                      src={
+                        typeof selectedProduct?.images === "string"
+                          ? selectedProduct?.images
+                          : selectedProduct?.images?.src || NoImg
+                      }
                       alt=""
                     />
                   </button>
@@ -64,7 +107,11 @@ const SingleProductPage = () => {
                       width={100}
                       height={100}
                       className="h-full w-full object-cover"
-                      src={selectedProduct?.images?.src ?? NoImg}
+                      src={
+                        typeof selectedProduct?.images === "string"
+                          ? selectedProduct?.images
+                          : selectedProduct?.images?.src || NoImg
+                      }
                       alt=""
                     />
                   </button>
@@ -141,44 +188,6 @@ const SingleProductPage = () => {
               </p>
             </div>
 
-            {/* <h2 className="mt-8 text-base text-gray-900">Specs</h2>
-            <div className="mt-3 flex select-none flex-wrap items-center gap-1">
-              <label className="">
-                <input
-                  type="radio"
-                  name="type"
-                  value="Powder"
-                  className="peer sr-only"
-                  checked
-                />
-                <p className="peer-checked:bg-black peer-checked:text-white rounded-lg border border-black px-6 py-2 font-bold">
-                  {selectedProduct?.processor}
-                </p>
-              </label>
-              <label className="">
-                <input
-                  type="radio"
-                  name="type"
-                  value="Whole Bean"
-                  className="peer sr-only"
-                />
-                <p className="peer-checked:bg-black peer-checked:text-white rounded-lg border border-black px-6 py-2 font-bold">
-                  {selectedProduct?.rom}
-                </p>
-              </label>
-              <label className="">
-                <input
-                  type="radio"
-                  name="type"
-                  value="Ground"
-                  className="peer sr-only"
-                />
-                <p className="peer-checked:bg-black peer-checked:text-white rounded-lg border border-black px-6 py-2 font-bold">
-                  {selectedProduct?.battery}
-                </p>
-              </label>
-            </div> */}
-
             <h2 className="mt-8 text-base text-gray-900">
               Choose your Emi plan
             </h2>
@@ -238,6 +247,7 @@ const SingleProductPage = () => {
 
               <button
                 type="button"
+                onClick={handleAddToCart}
                 className="inline-flex items-center justify-center rounded-md border-2 border-transparent bg-gray-900 bg-none px-12 py-3 text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800"
               >
                 <svg
@@ -354,6 +364,35 @@ const SingleProductPage = () => {
               </p>
             </div>
           </div>
+          <Snackbar
+            open={showAlert}
+            autoHideDuration={6000}
+            onClose={handleCloseSnackbar}
+          >
+            <MuiAlert
+              elevation={6}
+              variant="filled"
+              onClose={handleCloseSnackbar}
+              severity="error"
+            >
+              This item is already in your cart.
+            </MuiAlert>
+          </Snackbar>
+
+          <Snackbar
+            open={sucessAlert}
+            autoHideDuration={6000}
+            onClose={handleCloseSucessAlert}
+          >
+            <MuiAlert
+              elevation={6}
+              variant="filled"
+              onClose={handleCloseSucessAlert}
+              severity="success"
+            >
+              This item added to your cart.
+            </MuiAlert>
+          </Snackbar>
         </div>
       </div>
     </section>

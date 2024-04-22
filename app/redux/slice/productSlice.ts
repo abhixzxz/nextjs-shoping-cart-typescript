@@ -14,6 +14,7 @@ interface Product {
   rom: string;
   rating: string;
   description: string;
+  companyName:string;
 }
 
 interface CartState {
